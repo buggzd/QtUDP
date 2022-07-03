@@ -7,6 +7,7 @@
 #include "QHostAddress"
 #include "QString"
 #include "QTextEdit"
+#include "myudp.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,10 +20,16 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    //按钮的槽函数
 private slots:
+    //消息发送按钮
     void btn_sendMessage();
+    //设置端口
+    void btn_setPort();
 private:
     Ui::MainWindow *ui;
-    QUdpSocket* udpSocket;
+    myUDP *myUDPsocket;
+    //设置目标IP
+    void upDateIP();
 };
 #endif // MAINWINDOW_H
